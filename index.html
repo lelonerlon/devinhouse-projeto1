@@ -14,31 +14,38 @@
 </head>
 
 <body>
-    <header>
-        <section class="container">
+    <section class="container">
+        <header>
+            <h1>Lojas Baiana</h1>
             <label id="title-form">Adicionar novo produto:</label>
             <div class="    ">
                 <input id="input-product" name="input-product" type="text" placeholder="Digite o produto"
-                    class="input-product" >
-                <button id="add-product" class="btn-bto-main" >Adicionar</button>
+                    class="input-product">
+                <button id="add-product" class="btn-bto-main" onclick="saveProduct()">Adicionar</button>
             </div>
-    </header>
-    <main>
-        <section class="container">
+        </header>
+        <main>
+
             <table>
-                <thead>Lista de Produtos</thead>
-                <tbody id='table-product'></tbody>
+                <thead>
+                    <span class="product-list">Lista de Produtos</span>
+                </thead>
+                <tbody id='table-products'></tbody>
             </table>
 
-        </section>
-    </main>
+        </main>
+    </section>
 
-
+    <span id="span-modal"></span>
+    <!-- <footer>
+    <p class="copyright">&copy; Erlon Ressurreição. Para entrar em contato  <a href="mailto:erlon.ressurreicao@gmail.com">Clique aqui</a></p>
+</footer> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
-    <script type = "module" src="./src/js/index.js"></script>
+    <script src="./src/js/function.js"></script>
 </body>
+
+
 
 </html>
