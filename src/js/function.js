@@ -1,7 +1,8 @@
 let id = 0;
-let value = 20;
-let arr = [];
-let payOut = 'não';
+let value = 0;
+let arr = JSON.parse(localStorage.getItem('data')) || [];
+let objAtual = '';
+
 const url_img_delete = 'https://img.icons8.com/ultraviolet/40/000000/delete-sign.png';
 const url_img_payout = 'https://img.icons8.com/fluency/48/000000/money-yours.png';
 
@@ -22,27 +23,29 @@ function saveProduct() {
 function addProduct(product) {
 
     arr.push(product)
+    localStorage.setItem('data', JSON.stringify(arr))
     id++;
-    console.log(arr)
+
 
 }
 
 function getProduct() {
     let product = {
         id: id,
-        name: document.getElementById('input-product').value.trim(),
+        name: (document.getElementById('input-product').value.trim()).toUpperCase(),
         value: '',
-        payOut: '',
+        payOut: false,
     };
 
     return product
 }
 
 function deleteProduct(id) {
-    console.log('Deletou: ' + id);
+
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].id == id) {
             arr.splice(i, 1);
+            localStorage.setItem('data', JSON.stringify(arr))
             listTable()
         }
     }
@@ -53,7 +56,11 @@ function deleteProduct(id) {
 
 function listTable() {
     let tbody = document.getElementById('table-products');
+    let totalItem = document.getElementById('total');
+    let total = 0;
     tbody.innerText = '';
+
+
 
     for (let i = 0; i < arr.length; i++) {
         let tr = tbody.insertRow();
@@ -64,43 +71,63 @@ function listTable() {
         let span = createElementSpan(arr[i]);
 
         //Cria o elemento para pagar
-        let payOutItem = createPayOutItem();
+
 
         //Cria o elemento para excluir
         let removeItem = createRemoveItem(arr[i].id);
 
         //Appensa as colunas e linhas na tabela raiz
-        tdExcluir.appendChild(payOutItem);
         tdExcluir.appendChild(removeItem);
         tdName.appendChild(span);
+
+        total += Number(arr[i].value);
+        totalItem.innerHTML = ('Total: ' + total).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
     }
 }
 
-function createElementSpan(ob) {
+function createElementSpan(obj) {
+    const span = document.createElement('span');
+    const div = document.createElement('div');
+    const input = document.createElement('input');
+    const label = document.createElement('label');
+    const s = document.createElement('s');
 
-    let span = document.createElement('span');
-    span.id = `id-${ob.id}`;
-    span.innerHTML = `               
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                    ${ob.name}
-                    </label>
-                </div>
-            `;
-    span.addEventListener('click', creatorModal(span.id));
+    span.id = `id-${obj.id}`;
+    div.classList.add = "form-check";
+
+    label.classList.add("form-check-label");
+    label.setAttribute("for", "flexCheckDefault");
+
+    input.classList.add("form-check-input");
+    input.value = "#exampleModal";
+    input.type = "checkbox";
+    input.id = "flexCheckDefault";
+    input.setAttribute("data-bs-toggle", "modal");
+    input.setAttribute("data-bs-target", "#exampleModal");
+
+    div.appendChild(input);
+
+    if (obj.payOut == false) {
+        label.textContent = obj.name;
+        div.appendChild(label);
+    } else {
+        input.checked = true;
+        input.id = "flexCheckChecked";
+        label.setAttribute("for", "flexCheckChecked");
+        s.textContent = obj.name;
+        label.appendChild(s)
+        div.appendChild(label)
+    }
+
+    span.appendChild(div);
+
+
+    span.addEventListener('click', () => createModal(obj));
 
     return span
 }
 
-function createPayOutItem() {
-    let payOutItem = document.createElement('img');
-    payOutItem.src = url_img_payout;
-    payOutItem.setAttribute("data-bs-toggle", "modal");
-    payOutItem.setAttribute("data-bs-target", "#exampleModal");
 
-    return payOutItem
-}
 
 function createRemoveItem(elID) {
 
@@ -111,29 +138,13 @@ function createRemoveItem(elID) {
     return removeItem
 }
 
-function creatorModal(id) {
-    let span = document.getElementById('span-modal');
-    let spanModal = document.createElement('span');
-    spanModal.id = id;
-    span.appendChild(spanModal);
-    spanModal.innerHTML = `
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>`;
+function createModal(obj) {
+    let title = document.getElementById('exampleModalLabel');
+    objAtual = obj;
+    let modalBody = document.querySelector('.modal-body');
+
+    title.innerText = `Item a selecionado: ${obj.name}`;
+
 }
 
 function openModal() {
@@ -157,6 +168,26 @@ function openModal() {
 
     });
 }
+
+function saveValueItem() {
+    let obj = objAtual;
+    let valueItem = Number(document.getElementById('valueItem').value.trim())
+    if (valueItem) {
+        obj.value = valueItem;
+        obj.payOut = true;
+
+
+        arr.push()
+        localStorage.setItem('data', JSON.stringify(arr))
+
+        listTable()
+
+    } else {
+        alert('Para salvar é necessário informar o valor');
+    }
+}
+
+
 
 
 
