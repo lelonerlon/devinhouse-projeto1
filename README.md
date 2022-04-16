@@ -21,3 +21,6 @@ usuário digite o valor da compra, após isso, deve-se somar ao valor total das 
 foram realizados), e deve ser carregada sempre que a página for reaberta.</li>
 </ol>
 
+<h3>Roteiro do desenvolvimento</h3>
+
+<p>Foi feito o html simples. O tr eo td é injetado dinamicamente pelo javascript. O modal também é injetado pelo javascript</p>
