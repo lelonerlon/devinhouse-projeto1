@@ -2,6 +2,8 @@
 
 <p>O Projeto é individual, e o intuito foi unificar todo o conhecimento adiquirido até o presente momento</p>
 
+<h2>Ítens essenciais e obrigatório minimo para poder seguir com o conhecimento</h2>
+
 <ol>
 <li> Um título na aba do navegador, para que o usuário encontre a sua aplicação no meio
 das várias abas que constantemente mantém abertas.</li>
@@ -18,5 +20,11 @@ usuário digite o valor da compra, após isso, deve-se somar ao valor total das 
 <li> A lista deve ser salva no "localStorage" do navegador (incluindo os produtos que já
 foram realizados), e deve ser carregada sempre que a página for reaberta.</li>
 </ol>
+<<<<<<< HEAD
 <h2>Roteiro do desenvolvimento</h2>
+=======
+
+<h3>Roteiro do desenvolvimento</h3>
+
+>>>>>>> 2666ef44ec57d8e42c2dcc45eece55f40e46db48
 <p>Foi feito o html simples. O tr eo td é injetado dinamicamente pelo javascript. O modal também é injetado pelo javascript</p>
