@@ -14,6 +14,7 @@
 </head>
 
 <body onload="listTable()">
+   <div class="background"></div>
     <section class="container">
         <header>
             <h1>Lojas Baiana</h1>
@@ -25,14 +26,15 @@
             </div>
         </header>
         <main>
-
-            <table>
-                <thead>
-                    <span class="product-list">Lista de Produtos</span>
-                </thead>
-                <tbody id='table-products'></tbody>
-            </table>
-           <div id="total">Total: </div>
+            <div class="back-list">
+                <table>
+                    <thead>
+                        <span class="product-list">Lista de compras</span>
+                    </thead>
+                    <tbody id='table-products'></tbody>
+                </table>
+            </div>
+            <div class="total" id="total">Total: </div>
         </main>
     </section>
 
@@ -45,15 +47,17 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="number" format="currency" precision="2" id="valueItem" type="text" value="">
+                        <input type="number" step="0.01" name="quantity" min="0.01" id="valueItem" placeholder="R$00,00"
+                            value="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick= "saveValueItem()" data-bs-dismiss="modal">Save changes</button>
+                        <button type="button" class="btn btn-primary" onclick="saveValueItem()"
+                            data-bs-dismiss="modal">Save changes</button>
                     </div>
                 </div>
             </div>
-        </div>`;
+        </div>
     </span>
     <!-- <footer>
     <p class="copyright">&copy; Erlon Ressurreição. Para entrar em contato  <a href="mailto:erlon.ressurreicao@gmail.com">Clique aqui</a></p>

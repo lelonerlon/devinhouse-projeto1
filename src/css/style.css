@@ -15,6 +15,16 @@ section{
 	overflow: hidden;
 }
 
+body {
+	background-image: url('/src/img/bac.jpg');
+	background-size: 100%;
+}
+
+body h1, label{
+	color: white;
+	padding: 3	px;
+}
+
 .btn-bto-main {
     border-radius: 10px;
 	padding: .2em 2em;
@@ -25,7 +35,7 @@ section{
 	margin: 0;
 	margin-top: -3px;
 	color: white;
-	background-color:#0c8cd3;
+	background-color:rgb(3, 3, 194);
 	border-color: #04324c;
 	width: 20%;
     clear: both;
@@ -36,9 +46,17 @@ section{
 .input-product {
     border-radius: 10px;
     margin: 0;
-	width: 100%;
-	border: 1px solid #ccc;
-	width: 70%;
+	height: 35px;
+	border: 3px solid darkblue;
+	width: 75%;
+}
+
+.back-list{
+	background-color: dimgray;
+	border-radius: 10px;
+	width: 700px;
+	text-align: center;
+	border-left: 100px;
 }
 
 table {
@@ -49,8 +67,8 @@ table {
  
 tbody tr td {
 	width: 2%;
-	text-align: center;
-	border: 1px solid grey;
+	/* text-align: center; */
+	/* border: 1px solid white; */
 	border-collapse: none;
 }
 tbody tr td label{
@@ -75,4 +93,13 @@ footer {
 
   .product-list {
 	  text-align: center;
+	  color: white;
+  }
+
+  .total, .modal-title{
+	  color: white;  
+  }
+
+  .modal-content{
+	  background-color: darkblue;
   }
