@@ -18,3 +18,5 @@ usuário digite o valor da compra, após isso, deve-se somar ao valor total das 
 <li> A lista deve ser salva no "localStorage" do navegador (incluindo os produtos que já
 foram realizados), e deve ser carregada sempre que a página for reaberta.</li>
 </ol>
+<h2>Roteiro do desenvolvimento</h2>
+<p>Foi feito o html simples. O tr eo td é injetado dinamicamente pelo javascript. O modal também é injetado pelo javascript</p>

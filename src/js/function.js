@@ -22,7 +22,6 @@ function saveProduct() {
     listTable()
 
 }
-
 //Cria o produto
 function getProduct() {
     let product = {
@@ -34,14 +33,12 @@ function getProduct() {
 
     return product
 }
-
 //Adiciona o produto no storage
 function addProduct(product) {
     arr.push(product)
     localStorage.setItem('data', JSON.stringify(arr))
     id++;
 }
-
 //Deleta o produto do array
 function deleteProduct(id) {
 
@@ -53,7 +50,6 @@ function deleteProduct(id) {
         }
     }
 }
-
 //Monta a lista de produtos
 function listTable() {
     let tbody = document.getElementById('table-products');
@@ -80,7 +76,6 @@ function listTable() {
         totalItem.innerHTML = (`Total da compra: ${total}`).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
     }
 }
-
 //Cria os elementos dinamicamente, que monta a lista de Produtos
 function createElementSpan(obj) {
     const span = document.createElement('span');
@@ -135,31 +130,12 @@ function createRemoveItem(elID) {
 
     return removeItem
 }
-
 //Cria o Modal de acordo com o item selecionado
 function createModal(obj) {
     let title = document.getElementById('exampleModalLabel');
     objAtual = obj;
     title.innerText = `Valor da (o) ${obj.name}`;
 }
-
-// function openModal() {
-//     const exampleModal = document.getElementById('exampleModal')
-
-//     exampleModal.addEventListener('show.bs.modal', function (event) {
-//         // Button that triggered the modal
-//         var button = event.relatedTarget
-
-   
-//         // var recipient = button.getAttribute('data-bs-whatever')
-
-//         // var modalTitle = exampleModal.querySelector('.modal-title')
-//         // var modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-
-//     });
-// }
-
 //Salva o valor do Produto selecionado
 function saveValueItem() {
     let obj = objAtual;
